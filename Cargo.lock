@@ -473,6 +473,7 @@ name = "alloy-script"
 version = "0.1.0"
 dependencies = [
  "alloy",
+ "alloy-serde",
  "dotenvy",
  "eyre",
  "tokio",
@@ -480,9 +481,9 @@ dependencies = [
 
 [[package]]
 name = "alloy-serde"
-version = "0.8.1"
+version = "0.8.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ea61b049d7ecc66a29f107970dae493d0908e366048f7484a1ca9b02c85f9b2b"
+checksum = "5851bf8d5ad33014bd0c45153c603303e730acc8a209450a7ae6b4a12c2789e2"
 dependencies = [
  "alloy-primitives",
  "serde",

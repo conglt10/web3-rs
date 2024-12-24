@@ -5,6 +5,7 @@ edition = "2021"
 
 [dependencies]
 alloy = { version = "0.8.1", features = ["full"] }
+alloy-serde = "0.8.3"
 dotenvy = "0.15.7"
 eyre = "0.6.12"
 tokio = { version = "1.41.1", features = ["rt-multi-thread", "time"] }
@@ -20,3 +21,8 @@ path = "src/get_lastest_block.rs"
 [[bin]]
 name = "deploy_contract"
 path = "src/deploy_contract.rs"
+
+[[bin]]
+name = "deploy_bytecode"
+path = "src/deploy_contract_with_bytecode.rs"
+
