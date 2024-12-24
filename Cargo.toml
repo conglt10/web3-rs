@@ -5,6 +5,7 @@ edition = "2021"
 
 [dependencies]
 alloy = { version = "0.8.1", features = ["full"] }
+dotenvy = "0.15.7"
 eyre = "0.6.12"
 tokio = { version = "1.41.1", features = ["rt-multi-thread", "time"] }
 
@@ -13,5 +14,5 @@ name = "math_ulti"
 path = "src/math_utilities.rs"
 
 [[bin]]
-name = "get_last_block"
+name = "get_lastest_block"
 path = "src/get_lastest_block.rs"
