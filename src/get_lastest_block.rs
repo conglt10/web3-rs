@@ -1,9 +1,12 @@
 use alloy::providers::{Provider, ProviderBuilder};
 use eyre::Result;
+use std::env;
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    let rpc_url = "https://eth.merkle.io".parse()?;
+    dotenvy::dotenv()?;
+
+    let rpc_url = env::var("RPC_URL")?.parse()?;
     let provider = ProviderBuilder::new().on_http(rpc_url);
 
     // Get latest block number.
