@@ -1,13 +1,12 @@
-use alloy::providers::{Provider, ProviderBuilder};
+use alloy::providers::Provider;
 use eyre::Result;
-use std::env;
+
+mod config;
+use config::config::get_provider;
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    dotenvy::dotenv()?;
-
-    let rpc_url = env::var("RPC_URL")?.parse()?;
-    let provider = ProviderBuilder::new().on_http(rpc_url);
+    let provider = get_provider().expect("Can not get provider");
 
     // Get latest block number.
     let latest_block = provider.get_block_number().await?;

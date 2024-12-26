@@ -1,9 +1,11 @@
-use alloy::{providers::ProviderBuilder, sol, primitives::address};
+use alloy::{sol, primitives::address};
 use alloy::primitives::{
     utils::format_units,
 };
 use eyre::Result;
 use std::env;
+mod config;
+use config::config::get_provider;
 
 sol!(
     #[allow(missing_docs)]
@@ -16,9 +18,8 @@ sol!(
 async fn main() -> Result<()> {
     dotenvy::dotenv()?;
 
-    let rpc_url = env::var("RPC_URL")?.parse()?;
     let erc20_address = env::var("ERC20_ADDRESS")?.parse()?;
-    let provider = ProviderBuilder::new().on_http(rpc_url);
+    let provider = get_provider().expect("Can not get provider");
 
     let contract = ERC20::new(erc20_address, provider);
 
@@ -39,3 +40,4 @@ async fn main() -> Result<()> {
 
     Ok(())
 }
+
