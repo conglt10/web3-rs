@@ -2,7 +2,7 @@ use alloy::providers::Provider;
 use eyre::Result;
 
 mod config;
-use config::config::get_provider;
+use config::network::get_provider;
 
 #[tokio::main]
 async fn main() -> Result<()> {

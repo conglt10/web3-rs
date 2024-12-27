@@ -1,9 +1,9 @@
-use alloy::sol;
 use alloy::signers::local::PrivateKeySigner;
+use alloy::sol;
 use eyre::Result;
 use std::env;
 mod config;
-use config::config::get_provider;
+use config::network::get_provider;
 
 sol!(
     #[derive(Debug)]

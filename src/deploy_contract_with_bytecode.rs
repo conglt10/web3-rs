@@ -1,13 +1,13 @@
 use alloy::{
     hex,
-    network::{TransactionBuilder, ReceiptResponse},
-    rpc::types::TransactionRequest,
+    network::{ReceiptResponse, TransactionBuilder},
     providers::Provider,
+    rpc::types::TransactionRequest,
 };
-use eyre::Result;
 use alloy_serde::WithOtherFields;
+use eyre::Result;
 mod config;
-use config::config::get_provider;
+use config::network::get_provider;
 
 #[tokio::main]
 async fn main() -> Result<()> {
@@ -21,9 +21,15 @@ async fn main() -> Result<()> {
     let tx = TransactionRequest::default().with_deploy_code(bytecode);
 
     // Deploy the contract.
-    let receipt = provider.send_transaction(WithOtherFields::new(tx)).await?.get_receipt().await?;
+    let receipt = provider
+        .send_transaction(WithOtherFields::new(tx))
+        .await?
+        .get_receipt()
+        .await?;
 
-    let contract_address = receipt.contract_address().expect("Failed to get contract address");
+    let contract_address = receipt
+        .contract_address()
+        .expect("Failed to get contract address");
     println!("Deployed contract at address: {}", contract_address);
 
     Ok(())
