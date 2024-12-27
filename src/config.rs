@@ -1,10 +1,7 @@
 pub mod config {
     use std::env;
     use alloy::{
-        network::{AnyNetwork, EthereumWallet},
-        signers::local::PrivateKeySigner,
-        providers::{ProviderBuilder, RootProvider},
-        providers::fillers::{FillProvider, JoinFill, GasFiller, BlobGasFiller, NonceFiller, ChainIdFiller, WalletFiller},
+        network::{AnyNetwork, EthereumWallet}, primitives::Address, providers::{fillers::{BlobGasFiller, ChainIdFiller, FillProvider, GasFiller, JoinFill, NonceFiller, WalletFiller}, ProviderBuilder, RootProvider}, signers::local::PrivateKeySigner
     };
     use std::error::Error;
     use reqwest::Client;
@@ -15,13 +12,18 @@ pub mod config {
     pub fn get_provider() -> Result<Provider, Box<dyn Error>> {
         let rpc_url = get_rpc_url()?;
         let private_key: PrivateKeySigner = get_private_key()?;
-        let deployer = EthereumWallet::from(private_key);
+        let wallet = EthereumWallet::from(private_key);
         let provider  = ProviderBuilder::new()
             .with_recommended_fillers()
             .network::<AnyNetwork>()
-            .wallet(deployer)
+            .wallet(wallet)
             .on_http(rpc_url);
         Ok(provider)
+    }
+
+    pub fn get_wallet_address() -> Result<Address, Box<dyn Error>> {
+        let private_key: PrivateKeySigner = get_private_key()?;
+        Ok(private_key.address())
     }
 
     fn get_private_key() -> Result<PrivateKeySigner,  Box<dyn Error>> {
