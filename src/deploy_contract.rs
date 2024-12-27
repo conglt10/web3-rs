@@ -1,7 +1,7 @@
 use alloy::sol;
 use eyre::Result;
 mod config;
-use config::config::get_provider;
+use config::network::get_provider;
 
 sol!(
     #[allow(missing_docs)]

@@ -1,11 +1,9 @@
-use alloy::{sol, primitives::address};
-use alloy::primitives::{
-    utils::format_units,
-};
+use alloy::primitives::utils::format_units;
+use alloy::{primitives::address, sol};
 use eyre::Result;
 use std::env;
 mod config;
-use config::config::get_provider;
+use config::network::get_provider;
 
 sol!(
     #[allow(missing_docs)]
@@ -28,7 +26,11 @@ async fn main() -> Result<()> {
 
     println!("ERC-20 total supply is {total_supply}");
 
-    let balance = contract.balanceOf(address!("0000000000000000000000000000000000000000")).call().await?._0;
+    let balance = contract
+        .balanceOf(address!("0000000000000000000000000000000000000000"))
+        .call()
+        .await?
+        ._0;
     println!("Balance of zero address: {balance}");
 
     let decimals = contract.decimals().call().await?._0;
@@ -37,7 +39,5 @@ async fn main() -> Result<()> {
     let ether_balance = format_units(balance, decimals)?;
     println!("Balance of zero address: {ether_balance}");
 
-
     Ok(())
 }
-
