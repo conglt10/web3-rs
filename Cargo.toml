@@ -16,6 +16,10 @@ name = "call_erc20"
 path = "src/call_erc20.rs"
 
 [[bin]]
+name = "call_erc721"
+path = "src/call_erc721.rs"
+
+[[bin]]
 name = "get_lastest_block"
 path = "src/get_lastest_block.rs"
 
@@ -26,4 +30,9 @@ path = "src/deploy_contract.rs"
 [[bin]]
 name = "deploy_contract_with_bytecode"
 path = "src/deploy_contract_with_bytecode.rs"
+
+[[bin]]
+name = "send_eth"
+path = "src/send_eth.rs"
+
 
