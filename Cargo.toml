@@ -41,4 +41,8 @@ path = "src/send_eth.rs"
 name = "hd_wallet"
 path = "src/hd_wallet.rs"
 
+[[bin]]
+name = "gen_wallet"
+path = "src/gen_wallet.rs"
+
 
