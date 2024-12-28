@@ -6,8 +6,10 @@ edition = "2021"
 [dependencies]
 alloy = { version = "0.8.1", features = ["full"] }
 alloy-serde = "0.8.3"
+alloy-signer-local = { version = "0.8.3", features = ["mnemonic"] }
 dotenvy = "0.15.7"
 eyre = "0.6.12"
+hex = "0.4.3"
 reqwest = "0.12.9"
 tokio = { version = "1.41.1", features = ["rt-multi-thread", "time"] }
 
@@ -34,5 +36,9 @@ path = "src/deploy_contract_with_bytecode.rs"
 [[bin]]
 name = "send_eth"
 path = "src/send_eth.rs"
+
+[[bin]]
+name = "hd_wallet"
+path = "src/hd_wallet.rs"
 
 
