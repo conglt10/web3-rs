@@ -45,4 +45,12 @@ path = "src/hd_wallet.rs"
 name = "gen_wallet"
 path = "src/gen_wallet.rs"
 
+[[bin]]
+name = "raw_tx"
+path = "src/raw_tx.rs"
+
+[[bin]]
+name = "query_logs"
+path = "src/query_logs.rs"
+
 
