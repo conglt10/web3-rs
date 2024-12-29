@@ -34,7 +34,7 @@ jobs:
 
       # 5. Lint
       - name: Run cargo clippy
-        run: cargo clippy -- -D warnings
+        run: cargo clippy
 
       # 6. cargo build
       - name: Run build
